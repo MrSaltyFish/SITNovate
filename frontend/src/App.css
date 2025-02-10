@@ -83,4 +83,10 @@
 }
 
 .submit-button {
+  display: flex;
+  align-items: center;
+}
+
+.submit-button img {
+  padding: 0px 20px;
 }

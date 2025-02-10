@@ -11,6 +11,7 @@ function App() {
         <div key={index} className="member">
           <div className="heading">{member}:</div>
           <div className="member-input">
+          <span>{val}</span>
             <label className="member-label">Name:</label>
             <input type="text" className="member-input-field" />
           </div>
@@ -22,8 +23,8 @@ function App() {
       ))}
       <button onClick={setVal} label="Submit">
         <div className="submit-button">
+          <span className="submit"> Submit </span>
           <img src="vite.svg" />
-          Submit{" "}
         </div>
       </button>
     </>
