@@ -1,6 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Header from "./Header";
+import Footer from "./Footer";
+
 import HomePage from "../pages/HomePage";
 import AnalysisPage from "../pages/AnalysisPage";
 import AboutUsPage from "../pages/AboutUsPage";
@@ -20,6 +23,7 @@ const App = () => {
         <Route path="/login" element={<UserLogin />} />
         <Route path="/UserRegister" element={<UserRegister />} />
       </Routes>
+      <Footer />
     </div>
   );
 };
