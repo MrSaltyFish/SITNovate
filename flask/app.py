@@ -19,8 +19,13 @@ def predict_sentiment(tweet):
     sentiment = "Positive" if prediction[0] == 1 else "Negative"
     return sentiment
 
-# Flask API route
-@app.route('/   ', methods=['POST'])
+# 🔹 Basic "Hello, World!" route
+@app.route('/api/', methods=['GET'])
+def hello():
+    return jsonify({"message": "Hello, World! Welcome to the Sentiment Analysis API 🚀"}), 200
+
+# 🔹 Flask API route for sentiment prediction
+@app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()  # Get JSON request
     tweet = data.get("tweet", "")  # Extract tweet text
