@@ -13,6 +13,7 @@ import UserRegister from "./pages/UserRegister";
 
 import Start from "./pages/Start";
 import Home from "./pages/Home";
+import AnalyticsPage from "./pages/AnalyticsPage";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='/login' element={<UserLogin />} />
         <Route path='/register' element={<UserRegister />} />
         <Route path = '/home' element={<Home />} />
+        <Route path = '/AnalyticsPage' element={<AnalyticsPage />} />
 
       </Routes>
       <Footer />

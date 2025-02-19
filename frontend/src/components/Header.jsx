@@ -40,6 +40,11 @@ const Header = () => {
             homepageours
             </Link>
           </li>
+          <li>
+            <Link to="/analyticspage" className="text-lg text-gray-700 hover:text-blue-500">
+              analytics
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
