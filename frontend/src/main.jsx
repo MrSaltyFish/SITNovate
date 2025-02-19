@@ -1,13 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./main.css";
+import App from "./components/App.jsx"; // Corrected path
 
-import App from '../components/App.jsx'
-import Header from '../components/Header.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Header />
+createRoot(document.getElementById("root")).render(
+  <Router>
     <App />
-  </StrictMode>,
-)
+  </Router>
+);

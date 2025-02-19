@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -6,12 +7,13 @@ const Header = () => {
       {/* Logo & Company Name */}
       <div className="flex items-center">
         <img
-          src="/your-image.jpg" // Change this to your image path
+          src="/logo.png" // Ensure this path is correct
           alt="Logo"
           className="w-12 h-12 rounded-full object-cover"
         />
         <span className="ml-3 text-2xl font-bold text-gray-800 font-goudy">
-          Your Company
+          Sentiment <br />
+          Analyzer
         </span>
       </div>
 
@@ -19,14 +21,19 @@ const Header = () => {
       <nav>
         <ul className="flex space-x-6">
           <li>
-            <a href="#" className="text-lg text-gray-700 hover:text-blue-500">
+            <Link to="/" className="text-lg text-gray-700 hover:text-blue-500">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="text-lg text-gray-700 hover:text-blue-500">
+            <Link to="/analysis" className="text-lg text-gray-700 hover:text-blue-500">
+              Analysis
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" className="text-lg text-gray-700 hover:text-blue-500">
               About Us
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
