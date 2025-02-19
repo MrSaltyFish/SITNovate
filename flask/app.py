@@ -19,6 +19,10 @@ def predict_sentiment(tweet):
     sentiment = "Positive" if prediction[0] == 1 else "Negative"
     return sentiment
 
+@app.route("/")
+def home():
+    return "Hello, Flask on Render!"
+
 # 🔹 Basic "Hello, World!" route
 @app.route('/api/', methods=['GET'])
 def hello():
