@@ -14,6 +14,7 @@ import { Billing, Business, CardDeal, Clients, CTA, Navbar, Stats, Testimonials,
 
 import Start from "./pages/Start";
 import Home from "./pages/Home";
+import AnalyticsPage from "./pages/AnalyticsPage";
 import { styles } from './style';
 
 const App = () => {
@@ -31,8 +32,6 @@ const App = () => {
         <Route path='/login' element={<UserLogin />} />
         <Route path='/register' element={<UserRegister />} />
         <Route path = '/home' element={<Home />} />
-        <Route path = '/analysis_Swarali' element={<analysis_Swarali/>} />
-
 
       </Routes>
       <Footer />
