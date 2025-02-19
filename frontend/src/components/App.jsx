@@ -4,15 +4,21 @@ import Header from "./Header";
 import HomePage from "../pages/HomePage";
 import AnalysisPage from "../pages/AnalysisPage";
 import AboutUsPage from "../pages/AboutUsPage";
+import UserLogin from "../pages/UserLogin";
+import StartPage from "../pages/StartPage";
+import UserRegister from "../pages/UserRegister";
 
 const App = () => {
   return (
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/analysis" element={<AnalysisPage />} />
         <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/startpage" element={<StartPage />} />
+        <Route path="/login" element={<UserLogin />} />
+        <Route path="/UserRegister" element={<UserRegister />} />
       </Routes>
     </div>
   );

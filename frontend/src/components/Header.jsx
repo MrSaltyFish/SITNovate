@@ -21,13 +21,18 @@ const Header = () => {
       <nav>
         <ul className="flex space-x-6">
           <li>
-            <Link to="/" className="text-lg text-gray-700 hover:text-blue-500">
+            <Link to="/home" className="text-lg text-gray-700 hover:text-blue-500">
               Home
             </Link>
           </li>
           <li>
             <Link to="/analysis" className="text-lg text-gray-700 hover:text-blue-500">
               Analysis
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" className="text-lg text-gray-700 hover:text-blue-500">
+              About Us
             </Link>
           </li>
           <li>
