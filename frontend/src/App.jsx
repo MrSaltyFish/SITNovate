@@ -10,9 +10,11 @@ import AboutUsPage from "./pages/AboutUsPage";
 import UserLogin from "./pages/UserLogin";
 import StartPage from "./pages/StartPage";
 import UserRegister from "./pages/UserRegister";
+import { Billing, Business, CardDeal, Clients, CTA, Navbar, Stats, Testimonials, Hero } from "./components";
 
 import Start from "./pages/Start";
 import Home from "./pages/Home";
+import { styles } from './style';
 
 const App = () => {
   return (
@@ -23,11 +25,14 @@ const App = () => {
         <Route path="/analysis" element={<AnalysisPage />} />
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/startpage" element={<StartPage />} />
+        <Route path="/analysis_Swarali" element={<AnalysisPage_Swarali />} />
 
         <Route path='/' element={<Start />} />
         <Route path='/login' element={<UserLogin />} />
         <Route path='/register' element={<UserRegister />} />
         <Route path = '/home' element={<Home />} />
+        <Route path = '/analysis_Swarali' element={<analysis_Swarali/>} />
+
 
       </Routes>
       <Footer />
