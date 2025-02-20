@@ -26,5 +26,11 @@ app.post("/api/search", (req, res) => {
   res.json({ message: `Results for '${topic}'`, tweets: [] });
 });
 
+app.post("/api/test", (req, res) => {
+  console.log("Received test request");
+  res.body("Hello World");
+});
+
+
 app.listen(port, () => console.log(`Server running on port ${port}`));
 

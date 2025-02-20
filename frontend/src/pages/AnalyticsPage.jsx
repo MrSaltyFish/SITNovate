@@ -3,6 +3,8 @@ import SentimentChart from "../components/SentimentChart.jsx";
 import TextInput from "../components/TextInput.jsx";
 import Button from "../components/Button.jsx";
 
+const BACKEND_URL = "https://sitnovate-backend-e1mj.onrender.com";
+
 const AnalyticsPage = () => {
   const [tweetVolume, setTweetVolume] = useState(0);
   const [sentimentData, setSentimentData] = useState({ positive: 0, negative: 0, neutral: 0 });
@@ -13,9 +15,8 @@ const AnalyticsPage = () => {
   const [userEngagement, setUserEngagement] = useState({ likes: 0, shares: 0, peakTime: "" });
   const [searchTopic, setSearchTopic] = useState("");
 
-
   useEffect(() => {
-    fetch("/api/sentiment")
+    fetch(`${BACKEND_URL}/api/sentiment`)
       .then((res) => res.json())
       .then((data) => {
         setTweetVolume(data.totalTweets);
@@ -25,7 +26,8 @@ const AnalyticsPage = () => {
         setTopInfluencer(data.topInfluencer);
         setTopUser(data.topUser);
         setUserEngagement(data.userEngagement);
-      });
+      })
+      .catch((error) => console.error("Error fetching sentiment data:", error));
   }, []);
 
   // Function to send search topic to backend
@@ -36,7 +38,7 @@ const AnalyticsPage = () => {
     }
 
     try {
-      const response = await fetch("/api/search", {
+      const response = await fetch(`${BACKEND_URL}/sentiment/search`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +75,7 @@ const AnalyticsPage = () => {
             onChange={(e) => setSearchTopic(e.target.value)}
           />
           <Button label="Search" variant="primary" onClick={handleSearch} />
-          </div>
+        </div>
       </div>
 
       {/* Main Grid Section */}
