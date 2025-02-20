@@ -7,36 +7,27 @@ import { motion } from "framer-motion";
 const AnalyticsPage = () => {
   const [tweetVolume, setTweetVolume] = useState(0);
   const [sentimentData, setSentimentData] = useState(null);
-  const [trendingKeywords, setTrendingKeywords] = useState([]);
-  const [topCompanies, setTopCompanies] = useState([]);
-  const [topInfluencer, setTopInfluencer] = useState("");
-  const [topUser, setTopUser] = useState("");
-  const [userEngagement, setUserEngagement] = useState(null);
+  const [sampledThings, setSampledThings] = useState([]); // Holds API response
   const [searchTopic, setSearchTopic] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const fetchData = async () => {
+  const fetchSentimentData = async () => {
+    if (!searchTopic.trim()) return; // Prevent empty requests
     setLoading(true);
+
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`);
+      const encodedQuery = encodeURIComponent(searchTopic.trim()); // Handle spaces
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/sentiment/${encodedQuery}`);
       const data = await response.json();
-      setTweetVolume(data.totalTweets);
-      setSentimentData(data.sentiment);
-      setTrendingKeywords(data.trendingKeywords);
-      setTopCompanies(data.topCompanies);
-      setTopInfluencer(data.topInfluencer);
-      setTopUser(data.topUser);
-      setUserEngagement(data.userEngagement);
+
+      // Store the response into sampledThings
+      setSampledThings(data || []);
     } catch (error) {
       console.error("Error fetching sentiment data:", error);
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <section className="w-full min-h-screen bg-gray-900 text-white flex flex-col p-6 md:p-12 items-center">
@@ -53,82 +44,41 @@ const AnalyticsPage = () => {
         </div>
         <div className="w-full md:w-1/3 mt-4 md:mt-0 flex items-center justify-center space-x-4">
           <TextInput placeholder="Enter a keyword..." value={searchTopic} onChange={(e) => setSearchTopic(e.target.value)} />
-          <Button label="Search" variant="primary" onClick={fetchData} />
+          <Button label="Search" variant="primary" onClick={fetchSentimentData} />
         </div>
       </motion.div>
       
-      {/* Main Content */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        {/* Sentiment Analysis Card */}
-        <motion.div 
-          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          <h2 className="text-lg font-semibold text-blue-400">Total Tweet Volume</h2>
-          <p className="text-2xl font-bold">{tweetVolume}</p>
-          <p className="text-md text-gray-400">😀 {sentimentData?.positive}% 😡 {sentimentData?.negative}% 😐 {sentimentData?.neutral}%</p>
-          <SentimentChart />
-        </motion.div>
+      {/* Sampled Things (Response Boxes) */}
+      <motion.div 
+        className="w-full p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl mt-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        <h2 className="text-lg font-semibold text-blue-400">Sampled Things</h2>
 
-        {/* Trending Keywords */}
-        <motion.div 
-          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <h2 className="text-lg font-semibold text-blue-400">Trending Hashtags</h2>
-          <p className="text-md text-gray-400">🚀 {trendingKeywords.join(", ")}</p>
-        </motion.div>
-
-        {/* Most Discussed Companies */}
-        <motion.div 
-          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-        >
-          <h2 className="text-lg font-semibold text-blue-400">Most Discussed Companies</h2>
-          <p className="text-md text-gray-400">🏢 {topCompanies.join(", ")}</p>
-        </motion.div>
-
-        {/* Top Influencer */}
-        <motion.div 
-          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9 }}
-        >
-          <h2 className="text-lg font-semibold text-blue-400">Top Influencer</h2>
-          <p className="text-md text-gray-400">🌟 {topInfluencer}</p>
-        </motion.div>
-
-        {/* Most Active Users */}
-        <motion.div 
-          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
-        >
-          <h2 className="text-lg font-semibold text-blue-400">Most Active User</h2>
-          <p className="text-md text-gray-400">👥 {topUser}</p>
-        </motion.div>
-
-        {/* User Engagement */}
-        <motion.div 
-          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.3 }}
-        >
-          <h2 className="text-lg font-semibold text-blue-400">User Engagement</h2>
-          <p className="text-md text-gray-400">❤️ Likes: {userEngagement?.likes}</p>
-          <p className="text-md text-gray-400">🔄 Shares: {userEngagement?.shares}</p>
-          <p className="text-md text-gray-400">⏰ Peak Activity: {userEngagement?.peakTime}</p>
-        </motion.div>
-      </div>
+        <div className="mt-4 space-y-4">
+          {loading ? (
+            <p className="text-gray-400">Fetching data...</p>
+          ) : sampledThings.length > 0 ? (
+            sampledThings.map((item, index) => (
+              <div key={index} className="p-4 border border-gray-700 rounded-xl bg-gray-700 shadow">
+                <p className="text-sm text-gray-400">📢 <span className="font-semibold text-white">{item.Title}</span></p>
+                <p className="text-sm text-gray-400">💡 Score: <span className="text-white">{item.Score}</span></p>
+                <p className="text-sm text-gray-400">🔎 Sentiment: <span className={item.Sentiment === "Positive" ? "text-green-400" : item.Sentiment === "Negative" ? "text-red-400" : "text-yellow-400"}>
+                  {item.Sentiment}
+                </span></p>
+                <p className="text-sm text-gray-400">🌍 Language: <span className="text-white">{item.Language}</span></p>
+                {item.Error && (
+                  <p className="text-sm text-red-400">⚠ Error: {item.Error}</p>
+                )}
+              </div>
+            ))
+          ) : (
+            <p className="text-gray-400">No data available.</p>
+          )}
+        </div>
+      </motion.div>
     </section>
   );
 };
