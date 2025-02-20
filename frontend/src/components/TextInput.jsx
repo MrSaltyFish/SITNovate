@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 const TextInput = ({ label, placeholder, value, onChange }) => {
   return (
     <div className="flex flex-col space-y-2">
-      {label && <label className="text-gray-700 font-medium">{label}</label>}
+      {label && <label className="text-white font-medium">{label}</label>}
       <input
         type="text"
-        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+        className="border border-gray-300 rounded-lg px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
