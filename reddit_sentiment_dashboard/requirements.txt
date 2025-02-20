@@ -103,9 +103,7 @@ requests-ftp==0.3.1
 rpm==4.20.0
 scikit-learn==1.6.1
 scipy==1.15.2
-selinux @ file:///builddir/build/BUILD/libselinux-3.7-build/libselinux-3.7/src
 sentry-sdk==2.17.0
-sepolicy @ file:///builddir/build/BUILD/policycoreutils-3.7-build/selinux-3.7/python/sepolicy
 setools==4.5.1
 setuptools==69.2.0
 simpleaudio==1.0.4
