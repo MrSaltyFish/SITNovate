@@ -39,88 +39,94 @@ const AnalyticsPage = () => {
   }, []);
 
   return (
-    <section className="w-full min-h-screen bg-background text-text flex flex-col p-6 md:p-12 items-center">
+    <section className="w-full min-h-screen bg-gray-900 text-white flex flex-col p-6 md:p-12 items-center">
       {/* Heading Section */}
       <motion.div 
-        className="w-full flex flex-col md:flex-row items-center justify-between p-6 border border-border shadow-md bg-card rounded-2xl"
+        className="w-full flex flex-col md:flex-row items-center justify-between p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <div className="text-center md:text-left">
-          <h1 className="text-3xl font-bold text-primary">Sentiment Analysis Dashboard</h1>
-          <p className="text-lg text-mutedText">Real-Time Social Media Insights</p>
+          <h1 className="text-3xl font-bold text-blue-400">Sentiment Analysis Dashboard</h1>
+          <p className="text-lg text-gray-400">Real-Time Social Media Insights</p>
         </div>
         <div className="w-full md:w-1/3 mt-4 md:mt-0 flex items-center justify-center space-x-4">
           <TextInput placeholder="Enter a keyword..." value={searchTopic} onChange={(e) => setSearchTopic(e.target.value)} />
           <Button label="Search" variant="primary" onClick={fetchData} />
         </div>
       </motion.div>
+      
       {/* Main Content */}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         {/* Sentiment Analysis Card */}
         <motion.div 
-          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <h2 className="text-lg font-semibold text-primary">Total Tweet Volume</h2>
+          <h2 className="text-lg font-semibold text-blue-400">Total Tweet Volume</h2>
           <p className="text-2xl font-bold">{tweetVolume}</p>
-          <p className="text-md text-mutedText">😀 {sentimentData?.positive}% 😡 {sentimentData?.negative}% 😐 {sentimentData?.neutral}%</p>
+          <p className="text-md text-gray-400">😀 {sentimentData?.positive}% 😡 {sentimentData?.negative}% 😐 {sentimentData?.neutral}%</p>
           <SentimentChart />
         </motion.div>
+
         {/* Trending Keywords */}
         <motion.div 
-          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <h2 className="text-lg font-semibold text-primary">Trending Hashtags</h2>
-          <p className="text-md text-mutedText">🚀 {trendingKeywords.join(", ")}</p>
+          <h2 className="text-lg font-semibold text-blue-400">Trending Hashtags</h2>
+          <p className="text-md text-gray-400">🚀 {trendingKeywords.join(", ")}</p>
         </motion.div>
+
         {/* Most Discussed Companies */}
         <motion.div 
-          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
         >
-          <h2 className="text-lg font-semibold text-primary">Most Discussed Companies</h2>
-          <p className="text-md text-mutedText">🏢 {topCompanies.join(", ")}</p>
+          <h2 className="text-lg font-semibold text-blue-400">Most Discussed Companies</h2>
+          <p className="text-md text-gray-400">🏢 {topCompanies.join(", ")}</p>
         </motion.div>
+
         {/* Top Influencer */}
         <motion.div 
-          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
         >
-          <h2 className="text-lg font-semibold text-primary">Top Influencer</h2>
-          <p className="text-md text-mutedText">🌟 {topInfluencer}</p>
+          <h2 className="text-lg font-semibold text-blue-400">Top Influencer</h2>
+          <p className="text-md text-gray-400">🌟 {topInfluencer}</p>
         </motion.div>
+
         {/* Most Active Users */}
         <motion.div 
-          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1 }}
         >
-          <h2 className="text-lg font-semibold text-primary">Most Active User</h2>
-          <p className="text-md text-mutedText">👥 {topUser}</p>
+          <h2 className="text-lg font-semibold text-blue-400">Most Active User</h2>
+          <p className="text-md text-gray-400">👥 {topUser}</p>
         </motion.div>
+
         {/* User Engagement */}
         <motion.div 
-          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          className="p-6 border border-gray-700 shadow-lg bg-gray-800 rounded-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3 }}
         >
-          <h2 className="text-lg font-semibold text-primary">User Engagement</h2>
-          <p className="text-md text-mutedText">❤️ Likes: {userEngagement?.likes}</p>
-          <p className="text-md text-mutedText">🔄 Shares: {userEngagement?.shares}</p>
-          <p className="text-md text-mutedText">⏰ Peak Activity: {userEngagement?.peakTime}</p>
+          <h2 className="text-lg font-semibold text-blue-400">User Engagement</h2>
+          <p className="text-md text-gray-400">❤️ Likes: {userEngagement?.likes}</p>
+          <p className="text-md text-gray-400">🔄 Shares: {userEngagement?.shares}</p>
+          <p className="text-md text-gray-400">⏰ Peak Activity: {userEngagement?.peakTime}</p>
         </motion.div>
       </div>
     </section>
