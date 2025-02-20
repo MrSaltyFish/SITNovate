@@ -63,15 +63,16 @@ const AnalyticsPage = () => {
           ) : sampledThings.length > 0 ? (
             sampledThings.map((item, index) => (
               <div key={index} className="p-4 border border-gray-700 rounded-xl bg-gray-700 shadow">
-                <p className="text-sm text-gray-400">📢 <span className="font-semibold text-white">{item.Title}</span></p>
-                <p className="text-sm text-gray-400">💡 Score: <span className="text-white">{item.Score}</span></p>
-                <p className="text-sm text-gray-400">🔎 Sentiment: <span className={item.Sentiment === "Positive" ? "text-green-400" : item.Sentiment === "Negative" ? "text-red-400" : "text-yellow-400"}>
-                  {item.Sentiment}
+                <p className="text-sm text-gray-400">📢 <span className="font-semibold text-white">{item.title}</span></p>
+                <p className="text-sm text-gray-400">💡 Score: <span className="text-white">{item.score}</span></p>
+                <p className="text-sm text-gray-400">🔎 Sentiment: <span className={item.sentiment === "Positive" ? "text-green-400" : item.sentiment === "Negative" ? "text-red-400" : "text-yellow-400"}>
+                  {item.sentiment}
                 </span></p>
-                <p className="text-sm text-gray-400">🌍 Language: <span className="text-white">{item.Language}</span></p>
-                {item.Error && (
-                  <p className="text-sm text-red-400">⚠ Error: {item.Error}</p>
+                <p className="text-sm text-gray-400">🌍 Language: <span className="text-white">{item.language}</span></p>
+                {item.error && (
+                  <p className="text-sm text-red-400">⚠ Error: {item.error}</p>
                 )}
+
               </div>
             ))
           ) : (
