@@ -1,5 +1,5 @@
 import { features } from "../constants";
-import styles, { layout } from "../style";
+import styles, { layout } from "../constants/style";
 import Button from "./Button";
 
 const FeatureCard = ({ icon, title, content, index }) => (
@@ -26,13 +26,14 @@ const Business = () =>  (
         the money.
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-        With the right credit card, you can improve your financial life by
-        building credit, earning rewards and saving money. But with hundreds
-        of credit cards on the market.
+      With the right sentiment analysis dashboard,
+      you can gain deep insights into audience emotions,
+      track trends in real-time, and make data-driven
+      decisions. Stay ahead of public perception and
+      enhance your brand strategy with powerful AI-driven analytics.
       </p>
 
-      <Button styles={`mt-10`} />
-    </div>
+     </div>
 
     <div className={`${layout.sectionImg} flex-col`}>
       {features.map((feature, index) => (

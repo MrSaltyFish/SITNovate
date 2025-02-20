@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation(); // Get the current route
+
   return (
-    <header className="flex items-center justify-between px-8 py-4 bg-white shadow-md">
+    <header className="flex items-center justify-between px-8 py-4 shadow-md bg-black text-white">
       {/* Logo & Company Name */}
       <div className="flex items-center">
         <img
@@ -11,40 +13,32 @@ const Header = () => {
           alt="Logo"
           className="w-12 h-12 rounded-full object-cover"
         />
-        <span className="ml-3 text-2xl font-bold text-gray-800 font-goudy">
-          Sentiment <br />
-          Analyzer
+        <span className="ml-3 text-2xl font-bold font-goudy text-white">
+          SentimentShark
         </span>
       </div>
 
       {/* Navigation */}
       <nav>
         <ul className="flex space-x-6">
-          <li>
-            <Link to="/home" className="text-lg text-gray-700 hover:text-blue-500">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/analysis" className="text-lg text-gray-700 hover:text-blue-500">
-              Analysis
-            </Link>
-          </li>
-          <li>
-            <Link to="/about" className="text-lg text-gray-700 hover:text-blue-500">
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link to="/homepageours" className="text-lg text-gray-700 hover:text-blue-500">
-            homepageours
-            </Link>
-          </li>
-          <li>
-            <Link to="/analyticspage" className="text-lg text-gray-700 hover:text-blue-500">
-              analytics
-            </Link>
-          </li>
+          {[ 
+            { path: "/home", label: "Home" },
+            { path: "/analytics", label: "Analytics" },
+            { path: "/about", label: "About Us" },
+          ].map((item) => (
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                className={`text-lg ${
+                  location.pathname === item.path
+                    ? "font-bold underline text-blue-400" // Active link style
+                    : "text-white hover:text-blue-400"
+                }`}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

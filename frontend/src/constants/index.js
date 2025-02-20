@@ -1,4 +1,4 @@
-import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star  } from "../assets";
+import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star } from "../assets";
 
 export const navLinks = [
   {
@@ -10,12 +10,12 @@ export const navLinks = [
     title: "Features",
   },
   {
-    id: "product",
-    title: "Product",
+    id: "dashboard",
+    title: "Dashboard",
   },
   {
-    id: "clients",
-    title: "Clients",
+    id: "insights",
+    title: "Insights",
   },
 ];
 
@@ -23,23 +23,23 @@ export const features = [
   {
     id: "feature-1",
     icon: star,
-    title: "Rewards",
+    title: "Real-Time Analysis",
     content:
-      "The best credit cards offer some tantalizing combinations of promotions and prizes",
+      "Track live sentiment trends across social media and stay ahead of audience opinions.",
   },
   {
     id: "feature-2",
     icon: shield,
-    title: "100% Secured",
+    title: "AI-Powered Insights",
     content:
-      "We take proactive steps make sure your information and transactions are secure.",
+      "Leverage machine learning to analyze emotions, detect trends, and generate actionable insights.",
   },
   {
     id: "feature-3",
     icon: send,
-    title: "Balance Transfer",
+    title: "Customizable Reports",
     content:
-      "A balance transfer credit card can save you a lot of money in interest charges.",
+      "Generate detailed sentiment reports and visualize data for better decision-making.",
   },
 ];
 
@@ -47,25 +47,25 @@ export const feedback = [
   {
     id: "feedback-1",
     content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
+      "This sentiment dashboard has revolutionized how we understand customer emotions. A game-changer for brand analysis!",
     name: "Herman Jensen",
-    title: "Founder & Leader",
+    title: "Marketing Director",
     img: people01,
   },
   {
     id: "feedback-2",
     content:
-      "Money makes your life easier. If you're lucky to have it, you're lucky.",
+      "Incredible insights! Our social media strategy improved drastically after using this tool.",
     name: "Steve Mark",
-    title: "Founder & Leader",
+    title: "Social Media Manager",
     img: people02,
   },
   {
     id: "feedback-3",
     content:
-      "It is usually people in the money business, finance, and international trade that are really rich.",
+      "Being able to track sentiment trends in real-time helped us predict PR crises before they happened. Highly recommended!",
     name: "Kenn Gallagher",
-    title: "Founder & Leader",
+    title: "Brand Strategist",
     img: people03,
   },
 ];
@@ -73,18 +73,18 @@ export const feedback = [
 export const stats = [
   {
     id: "stats-1",
-    title: "User Active",
-    value: "3800+",
+    title: "Live Sentiment Tracked",
+    value: "500K+",
   },
   {
     id: "stats-2",
-    title: "Trusted by Company",
-    value: "230+",
+    title: "Trusted by Companies",
+    value: "150+",
   },
   {
     id: "stats-3",
-    title: "Transaction",
-    value: "$230M+",
+    title: "Analyzed Social Posts",
+    value: "10M+",
   },
 ];
 
@@ -93,24 +93,24 @@ export const footerLinks = [
     title: "Useful Links",
     links: [
       {
-        name: "Content",
-        link: "https://www.hoobank.com/content/",
+        name: "How It Works",
+        link: "https://www.sentimentdashboard.com/how-it-works/",
       },
       {
-        name: "How it Works",
-        link: "https://www.hoobank.com/how-it-works/",
+        name: "AI Technology",
+        link: "https://www.sentimentdashboard.com/ai-technology/",
       },
       {
-        name: "Create",
-        link: "https://www.hoobank.com/create/",
+        name: "Case Studies",
+        link: "https://www.sentimentdashboard.com/case-studies/",
       },
       {
-        name: "Explore",
-        link: "https://www.hoobank.com/explore/",
+        name: "Pricing",
+        link: "https://www.sentimentdashboard.com/pricing/",
       },
       {
         name: "Terms & Services",
-        link: "https://www.hoobank.com/terms-and-services/",
+        link: "https://www.sentimentdashboard.com/terms-and-services/",
       },
     ],
   },
@@ -118,37 +118,37 @@ export const footerLinks = [
     title: "Community",
     links: [
       {
-        name: "Help Center",
-        link: "https://www.hoobank.com/help-center/",
+        name: "Support Center",
+        link: "https://www.sentimentdashboard.com/support/",
       },
       {
-        name: "Partners",
-        link: "https://www.hoobank.com/partners/",
+        name: "Developers API",
+        link: "https://www.sentimentdashboard.com/api/",
       },
       {
-        name: "Suggestions",
-        link: "https://www.hoobank.com/suggestions/",
+        name: "Blog & News",
+        link: "https://www.sentimentdashboard.com/blog/",
       },
       {
-        name: "Blog",
-        link: "https://www.hoobank.com/blog/",
+        name: "User Stories",
+        link: "https://www.sentimentdashboard.com/stories/",
       },
       {
-        name: "Newsletters",
-        link: "https://www.hoobank.com/newsletters/",
+        name: "Newsletter",
+        link: "https://www.sentimentdashboard.com/newsletter/",
       },
     ],
   },
   {
-    title: "Partner",
+    title: "Partners",
     links: [
       {
-        name: "Our Partner",
-        link: "https://www.hoobank.com/our-partner/",
+        name: "Become a Partner",
+        link: "https://www.sentimentdashboard.com/partners/",
       },
       {
-        name: "Become a Partner",
-        link: "https://www.hoobank.com/become-a-partner/",
+        name: "Affiliate Program",
+        link: "https://www.sentimentdashboard.com/affiliate/",
       },
     ],
   },
@@ -158,22 +158,22 @@ export const socialMedia = [
   {
     id: "social-media-1",
     icon: instagram,
-    link: "https://www.instagram.com/",
+    link: "https://www.instagram.com/sentimentdashboard/",
   },
   {
     id: "social-media-2",
     icon: facebook,
-    link: "https://www.facebook.com/",
+    link: "https://www.facebook.com/sentimentdashboard/",
   },
   {
     id: "social-media-3",
     icon: twitter,
-    link: "https://www.twitter.com/",
+    link: "https://www.twitter.com/sentimentdashboard/",
   },
   {
     id: "social-media-4",
     icon: linkedin,
-    link: "https://www.linkedin.com/",
+    link: "https://www.linkedin.com/company/sentimentdashboard/",
   },
 ];
 

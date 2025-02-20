@@ -1,4 +1,4 @@
-import styles from "../style";
+import styles from "../constants/style";
 import { arrowUp } from "../assets";
 
 const GetStarted = () => (

@@ -1,7 +1,9 @@
-import styles from "./style";
-import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero } from "./components";
+import styles from "../constants/style";
+import React from "react";
+import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero } from "../components";
 
-const AnalyticsPage_Swarali = () => (
+const AnalyticsPageSwarali = () => {
+  return (
   <div className="bg-primary w-full overflow-hidden">
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
@@ -29,5 +31,6 @@ const AnalyticsPage_Swarali = () => (
     </div>
   </div>
 );
+}
 
-export default AnalyticsPage_Swarali.jsx;
+export default AnalyticsPageSwarali;
