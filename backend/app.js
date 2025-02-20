@@ -8,6 +8,10 @@ const connectToDb = require('./db/db');
 const userRoutes = require('./routes/user.routes.js');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+ 
+app.use(cors());
+
+
 
 connectToDb();
 
