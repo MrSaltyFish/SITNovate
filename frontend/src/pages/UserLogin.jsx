@@ -20,7 +20,6 @@ const UserLogin = () => {
     return (
         <div className='p-7 h-screen flex flex-col justify-between'>
              <div>
-             <img className='mr-9 mb-7' src="https://www.freepnglogos.com/uploads/wonder-woman-logo-21.png" alt="Logo" style={{ width: '80px' }} />
             <form onSubmit={(e) => submitHandler(e)}>
                 <h3 className='text-lg font-medium mb-2'> What's your email? </h3>
                 <input 
