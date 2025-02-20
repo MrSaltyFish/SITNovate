@@ -28,6 +28,34 @@ const AnalyticsPage = () => {
       });
   }, []);
 
+  // Function to send search topic to backend
+  const handleSearch = async () => {
+    if (!searchTopic.trim()) {
+      alert("Please enter a search topic!");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ topic: searchTopic }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch search results");
+      }
+
+      const data = await response.json();
+      console.log("Search Results:", data);
+      // You can update state here if you want to use the results
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
+
   return (
     <section className="w-full min-h-screen bg-gray-900 text-white flex flex-col p-6 md:p-12 items-center">
       {/* Heading Section */}
@@ -44,8 +72,8 @@ const AnalyticsPage = () => {
             value={searchTopic}
             onChange={(e) => setSearchTopic(e.target.value)}
           />
-          <Button label="Search" variant="primary" onClick={() => console.log(searchTopic)} />
-        </div>
+          <Button label="Search" variant="primary" onClick={handleSearch} />
+          </div>
       </div>
 
       {/* Main Grid Section */}
