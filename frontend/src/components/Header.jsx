@@ -2,14 +2,15 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
-  const location = useLocation(); // Get the current route
+  const location = useLocation();
+  if (location.pathname === "/" || location.pathname === "/start") return null; // Hide header on Start and StartPage
 
   return (
     <header className="flex items-center justify-between px-8 py-4 shadow-md bg-black text-white">
       {/* Logo & Company Name */}
       <div className="flex items-center">
         <img
-          src="/logo.png" // Ensure this path is correct
+          src="/logo.png"
           alt="Logo"
           className="w-12 h-12 rounded-full object-cover"
         />
@@ -31,7 +32,7 @@ const Header = () => {
                 to={item.path}
                 className={`text-lg ${
                   location.pathname === item.path
-                    ? "font-bold underline text-blue-400" // Active link style
+                    ? "font-bold underline text-blue-400"
                     : "text-white hover:text-blue-400"
                 }`}
               >
