@@ -26,6 +26,6 @@ app.get('/', (req,res) => {
 });
 
 
-app.use('/users', userRoutes);                 
+app.use('/routes', user.routes.js);                 
 
 module.exports = app;
