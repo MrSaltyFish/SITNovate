@@ -4,3 +4,4 @@ praw
 nltk
 textblob
 python-dotenv
+langdetect
