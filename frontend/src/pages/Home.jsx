@@ -23,7 +23,7 @@ const Home = () => {
         <Business />
         <Billing />
         <CardDeal />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Clients />
         <CTA />
       </div>
