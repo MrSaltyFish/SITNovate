@@ -10,6 +10,7 @@ import UserLogin from "./pages/UserLogin";
 import UserRegister from "./pages/UserRegister";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import PrivacyPage from "./pages/PrivacyPage";
+import ContactPage from "./pages/ContactPage";
 import { Billing, Business, CardDeal, Clients, CTA, Navbar, Stats, Testimonials, Hero } from "./components";
 
 import Start from "./pages/Start";
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/register' element={<UserRegister />} />
         <Route path = '/home' element={<Home />} />
         <Route path = '/homepageWhat' element={<HomePage />} />
+        <Route path = '/contact' element={<ContactPage />} />
 
       </Routes>
       <Footer />
