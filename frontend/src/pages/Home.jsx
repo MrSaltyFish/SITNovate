@@ -24,7 +24,7 @@ const Home = () => {
         <Billing />
         <CardDeal />
         {/* <Testimonials /> */}
-        <Clients />
+        {/* <Clients /> */}
         <CTA />
       </div>
     </div>
