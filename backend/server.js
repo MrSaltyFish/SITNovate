@@ -10,7 +10,20 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(cors());
+
+// Allow only your frontend domain
+const corsOptions = {
+  origin: "https://sit-novate-n5w0bwg4l-mrsaltyfishs-projects.vercel.app/", // Replace with your actual Vercel frontend URL
+  methods: "GET,POST",
+  allowedHeaders: "Content-Type",
+};
+
+
+app.use(cors(corsOptions));
+
+
+
+
 
 app.post("/api/search", (req, res) => {
   const { topic } = req.body;

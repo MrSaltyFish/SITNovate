@@ -15,20 +15,26 @@ const AnalyticsPage = () => {
   const [userEngagement, setUserEngagement] = useState({ likes: 0, shares: 0, peakTime: "" });
   const [searchTopic, setSearchTopic] = useState("");
 
-  useEffect(() => {
-    fetch(`${BACKEND_URL}/api/search`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTweetVolume(data.totalTweets);
-        setSentimentData(data.sentiment);
-        setTrendingKeywords(data.trendingKeywords);
-        setTopCompanies(data.topCompanies);
-        setTopInfluencer(data.topInfluencer);
-        setTopUser(data.topUser);
-        setUserEngagement(data.userEngagement);
-      })
-      .catch((error) => console.error("Error fetching sentiment data:", error));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${BACKEND_URL}/api/search`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setTweetVolume(data.totalTweets);
+  //       setSentimentData(data.sentiment);
+  //       setTrendingKeywords(data.trendingKeywords);
+  //       setTopCompanies(data.topCompanies);
+  //       setTopInfluencer(data.topInfluencer);
+  //       setTopUser(data.topUser);
+  //       setUserEngagement(data.userEngagement);
+  //     })
+  //     .catch((error) => console.error("Error fetching sentiment data:", error));
+  // }, []);
+
+  fetch(`${BACKEND_URL}/api/test`)
+  .then((res) => res.text())
+  .then((data) => console.log(data))
+  .catch((err) => console.error("Error:", err));
+
 
   // Function to send search topic to backend
   const handleSearch = async () => {
