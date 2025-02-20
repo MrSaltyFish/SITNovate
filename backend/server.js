@@ -26,7 +26,7 @@ app.use(cors(corsOptions));
 
 
 app.post("/api/search", (req, res) => {
-  const { topic } = req.body;
+  // const { topic } = req.body;
   console.log("Received search topic:", topic);
   // res.json({ message: `Results for '${topic}'`, tweets: [] });
   res.json({ message: `Test result`});
