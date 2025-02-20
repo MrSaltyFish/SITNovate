@@ -7,7 +7,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Hide header on specific routes
-  if (location.pathname === "/" || location.pathname === "/start") return null;
+  if (location.pathname === "/" || location.pathname === "/start" || location.pathname === "/login" || location.pathname === "/register" ) return null;
 
   return (
     <header className="bg-black text-white shadow-md">
@@ -15,7 +15,7 @@ const Header = () => {
         {/* Logo & Name */}
         <div className="flex items-center">
           <img
-            src="/logo.png"
+            src="/logoo.jpg"
             alt="Logo"
             className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
           />

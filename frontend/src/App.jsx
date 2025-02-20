@@ -31,7 +31,7 @@ const App = () => {
         <Route path='/register' element={<UserRegister />} />
         <Route path = '/home' element={<Home />} />
         <Route path = '/homepageWhat' element={<HomePage />} />
-        <Route path = '/contact' element={<ContactPage />} />
+        <Route path = '/contact' element={<AboutUsPage />} />
 
       </Routes>
       <Footer />

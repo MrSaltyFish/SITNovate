@@ -17,25 +17,31 @@ const AboutUsPage = () => {
         </p>
 
         <div className="mt-6 space-y-6">
-          <div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold text-blue-400">Arya Zade – Machine Learning & Design</h2>
             <p className="text-md text-gray-300">
               Arya developed the <span className="text-green-400">ML models</span> powering sentiment analysis, ensuring accurate classification of emotions and trends. She also focused on the <span className="text-green-400">design aspect</span>, making the dashboard intuitive and visually appealing.
             </p>
+            <p className="text-md text-gray-400 mt-3"><strong>Email:</strong> arya.zade@example.com</p>
+            <p className="text-md text-gray-400"><strong>Phone:</strong> +91 98765 43210</p>
           </div>
 
-          <div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold text-purple-400">Swarali Limaye – Backend Development</h2>
             <p className="text-md text-gray-300">
               Swarali worked on the <span className="text-green-400">backend architecture</span>, developing APIs and integrating ML models into a seamless, efficient pipeline. She ensured the system could handle real-time sentiment analysis requests while maintaining stability.
             </p>
+            <p className="text-md text-gray-400 mt-3"><strong>Email:</strong> swarali.limaye@example.com</p>
+            <p className="text-md text-gray-400"><strong>Phone:</strong> +91 98765 43211</p>
           </div>
 
-          <div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold text-yellow-400">Anvesh Khode – Frontend & Project Lead</h2>
             <p className="text-md text-gray-300">
               Anvesh designed and implemented the <span className="text-green-400">frontend</span> using React.js and TailwindCSS. He also had an <span className="text-green-400">overview of all aspects</span> of the project, ensuring smooth coordination between ML, backend, and UI components.
             </p>
+            <p className="text-md text-gray-400 mt-3"><strong>Email:</strong> anvesh.khode@example.com</p>
+            <p className="text-md text-gray-400"><strong>Phone:</strong> +91 98765 43212</p>
           </div>
         </div>
       </motion.div>

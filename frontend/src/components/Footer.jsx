@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+
+  if (location.pathname === "/" || location.pathname === "/start" || location.pathname === "/login" || location.pathname === "/register" ) return null;
+
+  
   return (
     <footer className="bg-black text-white shadow-md py-6">
       <div className="container mx-auto flex flex-col items-center space-y-4 px-4 text-center md:flex-row md:justify-between md:text-left">
