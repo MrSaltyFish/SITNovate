@@ -30,7 +30,7 @@ const AnalyticsPage = () => {
   //     .catch((error) => console.error("Error fetching sentiment data:", error));
   // }, []);
 
-  fetch(`${BACKEND_URL}/api/test`)
+  fetch(`${import.meta.env.VITE_BACKEND_URL}/api/test`)
   .then((res) => res.text())
   .then((data) => console.log(data))
   .catch((err) => console.error("Error:", err));
@@ -44,7 +44,7 @@ const AnalyticsPage = () => {
     }
 
     try {
-      const response = await fetch(`${BACKEND_URL}/sentiment/search`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/sentiment/search`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
