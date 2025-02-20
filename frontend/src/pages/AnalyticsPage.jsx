@@ -2,143 +2,126 @@ import React, { useEffect, useState } from "react";
 import SentimentChart from "../components/SentimentChart.jsx";
 import TextInput from "../components/TextInput.jsx";
 import Button from "../components/Button.jsx";
-
-const BACKEND_URL = "https://sitnovate-backend-e1mj.onrender.com";
+import { motion } from "framer-motion";
 
 const AnalyticsPage = () => {
   const [tweetVolume, setTweetVolume] = useState(0);
-  const [sentimentData, setSentimentData] = useState({ positive: 0, negative: 0, neutral: 0 });
+  const [sentimentData, setSentimentData] = useState(null);
   const [trendingKeywords, setTrendingKeywords] = useState([]);
   const [topCompanies, setTopCompanies] = useState([]);
   const [topInfluencer, setTopInfluencer] = useState("");
   const [topUser, setTopUser] = useState("");
-  const [userEngagement, setUserEngagement] = useState({ likes: 0, shares: 0, peakTime: "" });
+  const [userEngagement, setUserEngagement] = useState(null);
   const [searchTopic, setSearchTopic] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   fetch(`${BACKEND_URL}/api/search`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setTweetVolume(data.totalTweets);
-  //       setSentimentData(data.sentiment);
-  //       setTrendingKeywords(data.trendingKeywords);
-  //       setTopCompanies(data.topCompanies);
-  //       setTopInfluencer(data.topInfluencer);
-  //       setTopUser(data.topUser);
-  //       setUserEngagement(data.userEngagement);
-  //     })
-  //     .catch((error) => console.error("Error fetching sentiment data:", error));
-  // }, []);
-
-  fetch(`${import.meta.env.VITE_BACKEND_URL}/api/test`)
-  .then((res) => res.text())
-  .then((data) => console.log(data))
-  .catch((err) => console.error("Error:", err));
-
-
-  // Function to send search topic to backend
-  const handleSearch = async () => {
-    if (!searchTopic.trim()) {
-      alert("Please enter a search topic!");
-      return;
-    }
-
+  const fetchData = async () => {
+    setLoading(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/sentiment/search`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ topic: searchTopic }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch search results");
-      }
-
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`);
       const data = await response.json();
-      console.log("Search Results:", data);
-      // You can update state here if you want to use the results
+      setTweetVolume(data.totalTweets);
+      setSentimentData(data.sentiment);
+      setTrendingKeywords(data.trendingKeywords);
+      setTopCompanies(data.topCompanies);
+      setTopInfluencer(data.topInfluencer);
+      setTopUser(data.topUser);
+      setUserEngagement(data.userEngagement);
     } catch (error) {
-      console.error("Error fetching search results:", error);
+      console.error("Error fetching sentiment data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    <section className="w-full min-h-screen bg-gray-900 text-white flex flex-col p-6 md:p-12 items-center">
+    <section className="w-full min-h-screen bg-background text-text flex flex-col p-6 md:p-12 items-center">
       {/* Heading Section */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-between p-6 border border-white shadow-md bg-gray-800 rounded-2xl">
+      <motion.div 
+        className="w-full flex flex-col md:flex-row items-center justify-between p-6 border border-border shadow-md bg-card rounded-2xl"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="text-center md:text-left">
-          <h1 className="text-3xl font-bold">Sentiment Analysis Dashboard</h1>
-          <p className="text-lg text-gray-400">Real-Time Insights from Social Media</p>
+          <h1 className="text-3xl font-bold text-primary">Sentiment Analysis Dashboard</h1>
+          <p className="text-lg text-mutedText">Real-Time Social Media Insights</p>
         </div>
-        {/* Search Box and Button */}
         <div className="w-full md:w-1/3 mt-4 md:mt-0 flex items-center justify-center space-x-4">
-          <TextInput
-            label="Search Topic"
-            placeholder="Enter a keyword..."
-            value={searchTopic}
-            onChange={(e) => setSearchTopic(e.target.value)}
-          />
-          <Button label="Search" variant="primary" onClick={handleSearch} />
+          <TextInput placeholder="Enter a keyword..." value={searchTopic} onChange={(e) => setSearchTopic(e.target.value)} />
+          <Button label="Search" variant="primary" onClick={fetchData} />
         </div>
-      </div>
-
-      {/* Main Grid Section */}
+      </motion.div>
+      {/* Main Content */}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        {/* Left Column */}
-        <div className="flex flex-col gap-6">
-          {/* Sentiment Analysis Box */}
-          <div className="p-6 border border-white shadow-md bg-gray-800 rounded-2xl flex flex-col lg:flex-row">
-            <div className="lg:w-2/5 flex flex-col justify-center items-center border-b lg:border-r border-gray-600 p-4">
-              <div className="text-lg font-semibold text-blue-400 mb-2">Total Tweet Volume</div>
-              <p className="text-2xl font-bold">{tweetVolume}</p>
-              <div className="text-sm text-gray-400 mt-3 text-center">
-                <p>😀 Positive: {sentimentData.positive}%</p>
-                <p>😡 Negative: {sentimentData.negative}%</p>
-                <p>😐 Neutral: {sentimentData.neutral}%</p>
-              </div>
-            </div>
-            <div className="lg:w-3/5 flex justify-center items-center p-4">
-              <SentimentChart />
-            </div>
-          </div>
-
-          {/* Keyword Trends Box */}
-          <div className="p-6 border border-white shadow-md bg-gray-800 rounded-2xl">
-            <div className="text-lg font-semibold text-blue-400 border-b pb-2 mb-3">Keyword Trends</div>
-            <p className="text-md text-gray-400">🚀 Trending Hashtags: {trendingKeywords.join(", ")}</p>
-          </div>
-        </div>
-
-        {/* Right Column */}
-        <div className="flex flex-col gap-6">
-          {/* Data Visualization Box */}
-          <div className="flex flex-col lg:flex-row gap-6">
-            <div className="lg:w-3/5 p-6 border border-white shadow-md bg-gray-800 rounded-2xl">
-              <div className="text-lg font-semibold text-green-400 border-b pb-2 mb-3">Graph/Chart</div>
-              <p className="text-md text-gray-400">🏢 Most Discussed Companies: {topCompanies.join(", ")}</p>
-            </div>
-            <div className="lg:w-2/5 flex flex-col gap-6">
-              <div className="p-6 border border-white shadow-md bg-gray-800 rounded-2xl">
-                <div className="text-lg font-semibold text-green-400 border-b pb-2 mb-3">Top Influencer Tweets</div>
-                <p className="text-md text-gray-400">🌟 Most Retweeted: {topInfluencer}</p>
-              </div>
-              <div className="p-6 border border-white shadow-md bg-gray-800 rounded-2xl">
-                <div className="text-lg font-semibold text-green-400 border-b pb-2 mb-3">Most Active Users</div>
-                <p className="text-md text-gray-400">👥 User: {topUser}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* User Engagement Box */}
-          <div className="p-6 border border-white shadow-md bg-gray-800 rounded-2xl">
-            <div className="text-lg font-semibold text-green-400 border-b pb-2 mb-3">User Engagement</div>
-            <p className="text-md text-gray-400">❤️ Total Likes in 24 Hours: {userEngagement.likes}</p>
-            <p className="text-md text-gray-400">🔄 Retweets & Shares: {userEngagement.shares}</p>
-            <p className="text-md text-gray-400">⏰ Peak Activity: {userEngagement.peakTime}</p>
-          </div>
-        </div>
+        {/* Sentiment Analysis Card */}
+        <motion.div 
+          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <h2 className="text-lg font-semibold text-primary">Total Tweet Volume</h2>
+          <p className="text-2xl font-bold">{tweetVolume}</p>
+          <p className="text-md text-mutedText">😀 {sentimentData?.positive}% 😡 {sentimentData?.negative}% 😐 {sentimentData?.neutral}%</p>
+          <SentimentChart />
+        </motion.div>
+        {/* Trending Keywords */}
+        <motion.div 
+          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <h2 className="text-lg font-semibold text-primary">Trending Hashtags</h2>
+          <p className="text-md text-mutedText">🚀 {trendingKeywords.join(", ")}</p>
+        </motion.div>
+        {/* Most Discussed Companies */}
+        <motion.div 
+          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+        >
+          <h2 className="text-lg font-semibold text-primary">Most Discussed Companies</h2>
+          <p className="text-md text-mutedText">🏢 {topCompanies.join(", ")}</p>
+        </motion.div>
+        {/* Top Influencer */}
+        <motion.div 
+          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.9 }}
+        >
+          <h2 className="text-lg font-semibold text-primary">Top Influencer</h2>
+          <p className="text-md text-mutedText">🌟 {topInfluencer}</p>
+        </motion.div>
+        {/* Most Active Users */}
+        <motion.div 
+          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1 }}
+        >
+          <h2 className="text-lg font-semibold text-primary">Most Active User</h2>
+          <p className="text-md text-mutedText">👥 {topUser}</p>
+        </motion.div>
+        {/* User Engagement */}
+        <motion.div 
+          className="p-6 border border-border shadow-md bg-card rounded-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.3 }}
+        >
+          <h2 className="text-lg font-semibold text-primary">User Engagement</h2>
+          <p className="text-md text-mutedText">❤️ Likes: {userEngagement?.likes}</p>
+          <p className="text-md text-mutedText">🔄 Shares: {userEngagement?.shares}</p>
+          <p className="text-md text-mutedText">⏰ Peak Activity: {userEngagement?.peakTime}</p>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,5 +1,10 @@
 {
   "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "@shadcn/ui": "^0.0.4",
+    "framer-motion": "^12.4.5",
+    "react-loading-skeleton": "^3.5.0"
   }
 }
