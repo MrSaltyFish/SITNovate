@@ -16,7 +16,7 @@ const AnalyticsPage = () => {
   const [searchTopic, setSearchTopic] = useState("");
 
   useEffect(() => {
-    fetch(`${BACKEND_URL}/api/sentiment`)
+    fetch(`${BACKEND_URL}/api/search`)
       .then((res) => res.json())
       .then((data) => {
         setTweetVolume(data.totalTweets);
